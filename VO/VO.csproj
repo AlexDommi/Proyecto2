@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientesVo.cs" />
+    <Compile Include="EstadosVo.cs" />
     <Compile Include="PagosVo.cs" />
     <Compile Include="PedidoencVo.cs" />
     <Compile Include="ProductosVo.cs" />

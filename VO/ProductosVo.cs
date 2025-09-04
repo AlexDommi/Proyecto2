@@ -58,7 +58,7 @@ namespace VO
             PRODUC_CODIGO_K = int.Parse(dr["PRODUC_CODIGO_K"].ToString());
             PRODUC_DESCRIPCION = dr["PRODUC_DESCRIPCION"].ToString();
             PRODUC_DESCCORTA = dr["PRODUC_DESCCORTA"].ToString();
-            PRODUC_PESO = int.Parse(dr["PRODUC_PESO"].ToString());
+            PRODUC_PESO = decimal.Parse(dr["PRODUC_PESO"].ToString());
             PRODUC_OBSERVACIONES = dr["PRODUC_OBSERVACIONES"].ToString();
             PRODUC_CODIGO_BARRAS = dr["PRODUC_CODIGO_BARRAS"].ToString();
             CFGEDO_CODIGO_K = int.Parse(dr["CFGEDO_CODIGO_K"].ToString());

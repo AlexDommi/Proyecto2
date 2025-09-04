@@ -130,13 +130,14 @@ namespace CapaDatos
             try
             {
                 return MetodoDatos.iExecuteNonQuery(
-                                                "SP_ACTUALIZAR_PRODUCTO"
+                                                "SP_INSERTAR_PRODUCTO"
                                                 , "@PRODUC_DESCRIPCION", PRODUC_DESCRIPCION
                                                 , "@PRODUC_DESCCORTA", PRODUC_DESCCORTA
                                                 , "@PRODUC_PESO", PRODUC_PESO
+                                                , "@CFGEDO_CODIGO_K", CFGEDO_CODIGO_K
                                                 , "@PRODUC_OBSERVACIONES", PRODUC_OBSERVACIONES
                                                 , "@PRODUC_CODIGO_BARRAS", PRODUC_CODIGO_BARRAS
-                                                , "@CFGEDO_CODIGO_K", CFGEDO_CODIGO_K);
+                                                );
             }
             catch (Exception)
             {
@@ -175,6 +176,26 @@ namespace CapaDatos
             {
                 return 0;
             }
+        }
+
+        public static List<EstadosVo> GetListEstados(int? CFGEDO_CODIGO_K)
+        {
+            DataSet dsEstados;
+
+            if (CFGEDO_CODIGO_K != null)
+            {
+                dsEstados = MetodoDatos.dtExecuteDataSet("SP_LISTAR_ESTADOS", "@CFGEDO_CODIGO_K", CFGEDO_CODIGO_K);
+            }
+            else
+            {
+                dsEstados = MetodoDatos.dtExecuteDataSet("SP_LISTAR_ESTADOS");
+            }
+            List<EstadosVo> listaEstados = new List<EstadosVo>();
+            foreach (DataRow dr in dsEstados.Tables[0].Rows)
+            {
+                listaEstados.Add(new EstadosVo(dr));
+            }
+            return listaEstados;
         }
 
         public static List<ProductosVo> GetListProductos(int? PRODUC_CODIGO_K)
