@@ -14,6 +14,9 @@
 
     <div class="row mb-3">
         <div class="col-6">
+            <%--xxxxxxxxxxxxxxxxxxxxxx
+                
+                xxxxxxxxxxxxxxxxxxxxxxx--%>
             <asp:Label ID="lblDescCorta" runat="server">Desc Corta</asp:Label>
             <asp:TextBox ClientIDMode="Static" ID="txtDescCorta" runat="server" placeholder="Descripcion Corta" MaxLength="200" CssClass="form-control" ValidateRequestMode="Disabled"/>
         </div>
