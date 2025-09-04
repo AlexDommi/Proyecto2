@@ -33,10 +33,4 @@
             
         });
     }
-    /*
-    if (btnSeleccionar) {
-        btnSeleccionar.addEventListener("click", function () {
-            btnRegistrarNuevo.style.display = "block";
-        });
-    }*/
-
+    

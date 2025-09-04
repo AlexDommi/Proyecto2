@@ -2,14 +2,14 @@
 
 namespace VO
 {
-    internal class ProductosVo
+    public class ProductosVo
     {
         #region Productos
         //Atributos        
         private int _PRODUC_CODIGO_K;
         private string _PRODUC_DESCRIPCION;
         private string _PRODUC_DESCCORTA;
-        private int _PRODUC_PESO;
+        private decimal _PRODUC_PESO;
         private string _PRODUC_OBSERVACIONES;
         private string _PRODUC_CODIGO_BARRAS;
         private int _CFGEDO_CODIGO_K;
@@ -31,7 +31,7 @@ namespace VO
             get => _PRODUC_DESCCORTA;
             set => _PRODUC_DESCCORTA = value;
         }
-        public int PRODUC_PESO
+        public decimal PRODUC_PESO
         {
             get => _PRODUC_PESO;
             set => _PRODUC_PESO = value;

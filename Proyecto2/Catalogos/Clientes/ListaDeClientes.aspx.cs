@@ -174,18 +174,6 @@ namespace Proyecto2.Catalogos.Clientes
             string CTECLI_CORREO = txtCorreo.Text;
             string CTECLI_TELEFONO = txtTelefono.Text;
             string CTECLI_DIRECCION = txtDireccion.Text;
-           
-
-            /*if (!int.TryParse(CTECLI_CODIGO_K.ToString(), out 
-             * idCliente))
-            {
-                // No es un número válido
-                mensaje = "Error!";
-                sub = "El Id del cliente no es válido."+ CTECLI_CODIGO_K;
-                clase = SweetAlertConstants.sWarning;
-                UtilControls.SweetBox(mensaje, sub, clase, this.Page, this.GetType());
-                return; // salir del método
-            }*/
 
             string sResultado = BillTiendaOnline.ActualizarCliente(CTECLI_CODIGO_K, CTECLI_NOMBRE, CTECLI_RAZONSOCIAL, CTECLI_CORREO, CTECLI_TELEFONO, CTECLI_DIRECCION);
 
@@ -216,8 +204,6 @@ namespace Proyecto2.Catalogos.Clientes
             RefrescarGrid();
 
             UtilControls.SweetBox(mensaje, sub, SweetAlertConstants.sSuccess, this.Page, this.GetType());
-
-            
         }
     }
 }

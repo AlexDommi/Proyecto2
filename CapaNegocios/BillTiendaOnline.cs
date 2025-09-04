@@ -59,5 +59,55 @@ namespace CapaNegocios
                 return 0;
             }
         }
+
+        public List<ProductosVo> GetListProductos(int? PRODUC_CODIGO_K)
+        {
+            return DalTienda.GetListProductos(PRODUC_CODIGO_K);
+        }
+
+        public ProductosVo GetProductoById(int PRODUC_CODIGO_K)
+        {
+            return DalTienda.GetProductosById(PRODUC_CODIGO_K);
+        }
+
+        public static int InsertarProducto(string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K)
+        {
+            int iExitoso = DalTienda.InserarProducto(PRODUC_DESCRIPCION, PRODUC_DESCCORTA, PRODUC_PESO, PRODUC_OBSERVACIONES, PRODUC_CODIGO_BARRAS,CFGEDO_CODIGO_K);
+
+            if (iExitoso == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public int ActualizarProducto(int PRODUC_CODIGO_K, string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K)
+        {
+            int iExitoso = DalTienda.ActualizarProducto(PRODUC_CODIGO_K, PRODUC_DESCRIPCION, PRODUC_DESCCORTA, PRODUC_PESO, PRODUC_OBSERVACIONES, PRODUC_CODIGO_BARRAS, CFGEDO_CODIGO_K);
+            if (iExitoso == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public int EliminarProducto(int PRODUC_CODIGO_K)
+        {
+            int iExitoso = DalTienda.deleteProducto(PRODUC_CODIGO_K);
+            if (iExitoso == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

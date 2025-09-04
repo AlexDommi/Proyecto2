@@ -102,6 +102,7 @@
     <Content Include="About.aspx" />
     <Content Include="Catalogos\Index\Index.aspx" />
     <Content Include="Catalogos\Clientes\ListaDeClientes.aspx" />
+    <Content Include="Catalogos\Productos\Lista de Productos.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -210,6 +211,13 @@
     </Compile>
     <Compile Include="Catalogos\Clientes\ListaDeClientes.aspx.designer.cs">
       <DependentUpon>ListaDeClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Productos\Lista de Productos.aspx.cs">
+      <DependentUpon>Lista de Productos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Productos\Lista de Productos.aspx.designer.cs">
+      <DependentUpon>Lista de Productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
