@@ -1,20 +1,24 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
     // Ocultar el botón al cargar
     if (btnRegistrarNuevo) {
-        document.getElementById("txtId").disabled = true;
-        btnRegistrarNuevo.style.display = "none";
+        document.getElementById("txtId").disabled = true;S
     }
 });
 
     const btnNuevo = document.getElementById("btnNuevo");
     const btnRegistrarNuevo = document.getElementById("btnRegistrarNuevo");
+    const btnSubeImagen = document.getElementById("btnSubeImagen");
     // const btnEditar = document.getElementById("btnEditar");
     const btnSeleccionar = document.getElementById("btnSeleccionar");
-    const btnAgregarItem = document.getElementById("btnAgregarItem");
+const btnAgregarItem = document.getElementById("btnAgregarItem");
+//if (btnSubeImagen) {
+//    btnSubeImagen.addEventListener("click", function () {
+//        btnRegistrarNuevo.style.display = "block";
+//    });
+//}
     // Mostrar al dar clic en btnNuevo
     if (btnNuevo) {
         btnNuevo.addEventListener("click", function () {
-            btnRegistrarNuevo.style.display = "block";
             document.getElementById("txtId").value = "";
             document.getElementById("txtNombre").value = "";
             document.getElementById("txtRazonSocial").value = "";

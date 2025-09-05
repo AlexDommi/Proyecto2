@@ -74,7 +74,7 @@
     <br />
 
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12 col-md-offset-1">
             <div class="form-group">
                 <div class="table-responsive">
                     <%--ButtonField - Boton personalizado al gusto--%>
@@ -83,7 +83,7 @@
                         runat="server"
                         CssClass="table table-bordered table-striped table-condensed mt-3"
                         AutoGenerateColumns="false"
-                        
+                        OnRowCommand="GVPedidos_RowCommand"
                         >
                         <%--<asp:GridView
                         ID="GridView1"
@@ -99,42 +99,47 @@
                             <ItemTemplate>
                                 <asp:Button 
                                     ClientIDMode="Static"
-                                    ID="btnSeleccionar" 
+                                    ID="btnEliminarItem" 
                                     runat="server" 
                                     ItemStyle-Width="50px"
-                                    CssClass="btn btn-success btn-xs btnSeleccionar"
-                                    CommandName="Select" 
-                                    Text="Seleccionar" />
+                                    CssClass="btn btn-danger btn-xs btnSeleccionar"
+                                    CommandName="EliminarRow" 
+                                    CommandArgument='<%# ((GridViewRow) Container).RowIndex %>'
+                                    Text="Eliminar Item"/>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                          <asp:BoundField
                              DataField="PRODUC_CODIGO_K"
                              HeaderText="Id"
-                             ItemStyle-Width="50px"
+                             ItemStyle-Width="300px"
                              SortExpression="PRODUC_CODIGO_K" />
 
                          <%--Nombre--%>
                          <asp:BoundField
                              DataField="PEDCTED_CANTIDAD"
                              HeaderText="Cantidad"
-                             ItemStyle-Width="50px"
+                             ItemStyle-Width="300px"
                              SortExpression="PEDCTED_CANTIDAD" />
 
                          <%--Razon Social--%>
                          <asp:BoundField
                              DataField="PEDCTED_CANTPZA"
-                             HeaderText="DescCorta"
-                             ItemStyle-Width="50px"
+                             HeaderText="Pieza"
+                             ItemStyle-Width="300px"
                              SortExpression="PEDCTED_CANTPZA" />
 
                          <%--Correo--%>
                          <asp:BoundField
                              DataField="PEDCTED_PRECIO"
-                             HeaderText="Peso"
-                             ItemStyle-Width="50px"
+                             HeaderText="Precio"
+                             ItemStyle-Width="300px"
                              SortExpression="PEDCTED_PRECIO" />
-
+                         <asp:BoundField
+                             DataField="TOTAL"
+                             HeaderText="Total"
+                             ItemStyle-Width="300px"
+                             SortExpression="TOTAL" />
                     </Columns>
                     </asp:GridView>
                 </div>

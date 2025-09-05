@@ -35,6 +35,10 @@
     </div>
     <div class="row mb-3">
     <div class="col-6">
+        <asp:Label ID="lblPiezasXUnd" runat="server">Piezas x Unidad</asp:Label>
+        <asp:TextBox ClientIDMode="Static" ID="txtPZASXUND" runat="server" placeholder="PZASXUND" MaxLength="10" CssClass="form-control" ValidateRequestMode="Disabled" />
+    </div>
+    <div class="col-6">
         <asp:Label ID="lblObservaciones" runat="server">Observaciones</asp:Label>
         <asp:TextBox ClientIDMode="Static" ID="txtObservaciones" runat="server" placeholder="Observaciones" MaxLength="200" CssClass="form-control" ValidateRequestMode="Disabled"/>
     </div>
@@ -143,6 +147,11 @@
                             HeaderText="Estado"
                             ItemStyle-Width="50px"
                             SortExpression="CFGEDO_CODIGO_K" />
+                        <asp:BoundField
+                            DataField="PRODUC_PZAXUND"
+                            HeaderText="Pieza x Unidad"
+                            ItemStyle-Width="50px"
+                            SortExpression="PRODUC_PZAXUND" />
                     </Columns>
                     </asp:GridView>
                 </div>

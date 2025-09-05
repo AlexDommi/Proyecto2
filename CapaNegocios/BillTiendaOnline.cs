@@ -40,9 +40,9 @@ namespace CapaNegocios
             }
         }
 
-        public static string ActualizarCliente( int CTECLI_CODIGO_K, string CTECLI_NOMBRE, string CTECLI_RAZONSOCIAL, string CTECLI_CORREO, string CTECLI_TELEFONO, string CTECLI_DIRECCION)
+        public static string ActualizarCliente( int CTECLI_CODIGO_K, string CTECLI_NOMBRE, string CTECLI_RAZONSOCIAL, string CTECLI_CORREO, string CTECLI_TELEFONO, string CTECLI_DIRECCION, string CTECLI_FOTOURL)
         {
-            int iExitoso = DalTienda.ActualizarCliente(CTECLI_CODIGO_K, CTECLI_NOMBRE, CTECLI_RAZONSOCIAL, CTECLI_CORREO, CTECLI_TELEFONO, CTECLI_DIRECCION);
+            int iExitoso = DalTienda.ActualizarCliente(CTECLI_CODIGO_K, CTECLI_NOMBRE, CTECLI_RAZONSOCIAL, CTECLI_CORREO, CTECLI_TELEFONO, CTECLI_DIRECCION, CTECLI_FOTOURL);
             if (iExitoso == 1)
             {
                 return "1";
@@ -53,9 +53,9 @@ namespace CapaNegocios
             }
         }
 
-        public static int InsertarCliente(string CTECLI_NOMBRE, string CTECLI_RAZONSOCIAL, string CTECLI_CORREO, string CTECLI_TELEFONO, string CTECLI_DIRECCION)
+        public static int InsertarCliente(string CTECLI_NOMBRE, string CTECLI_RAZONSOCIAL, string CTECLI_CORREO, string CTECLI_TELEFONO, string CTECLI_DIRECCION, string CTECLI_FOTOURL)
         {
-            int iExitoso = DalTienda.InserarCliente(CTECLI_NOMBRE, CTECLI_RAZONSOCIAL, CTECLI_CORREO, CTECLI_TELEFONO, CTECLI_DIRECCION);
+            int iExitoso = DalTienda.InserarCliente(CTECLI_NOMBRE, CTECLI_RAZONSOCIAL, CTECLI_CORREO, CTECLI_TELEFONO, CTECLI_DIRECCION, CTECLI_FOTOURL);
             if (iExitoso == 1)
             {
                 return 1;
@@ -76,9 +76,9 @@ namespace CapaNegocios
             return DalTienda.GetProductosById(PRODUC_CODIGO_K);
         }
 
-        public static int InsertarProducto(string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K)
+        public static int InsertarProducto(string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K, int PRODUC_PZAXUND)
         {
-            int iExitoso = DalTienda.InserarProducto(PRODUC_DESCRIPCION, PRODUC_DESCCORTA, PRODUC_PESO, PRODUC_OBSERVACIONES, PRODUC_CODIGO_BARRAS,CFGEDO_CODIGO_K);
+            int iExitoso = DalTienda.InserarProducto(PRODUC_DESCRIPCION, PRODUC_DESCCORTA, PRODUC_PESO, PRODUC_OBSERVACIONES, PRODUC_CODIGO_BARRAS,CFGEDO_CODIGO_K, PRODUC_PZAXUND);
 
             if (iExitoso == 1)
             {
@@ -90,9 +90,9 @@ namespace CapaNegocios
             }
         }
 
-        public static int ActualizarProducto(int PRODUC_CODIGO_K, string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K)
+        public static int ActualizarProducto(int PRODUC_CODIGO_K, string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K, int PRODUC_PZAXUND)
         {
-            int iExitoso = DalTienda.ActualizarProducto(PRODUC_CODIGO_K, PRODUC_DESCRIPCION, PRODUC_DESCCORTA, PRODUC_PESO, PRODUC_OBSERVACIONES, PRODUC_CODIGO_BARRAS, CFGEDO_CODIGO_K);
+            int iExitoso = DalTienda.ActualizarProducto(PRODUC_CODIGO_K, PRODUC_DESCRIPCION, PRODUC_DESCCORTA, PRODUC_PESO, PRODUC_OBSERVACIONES, PRODUC_CODIGO_BARRAS, CFGEDO_CODIGO_K, PRODUC_PZAXUND);
             if (iExitoso == 1)
             {
                 return 1;
@@ -115,13 +115,6 @@ namespace CapaNegocios
                 return 0;
             }
         }
-        /*
-         [PEDCTE_CODIGO_K] [int] IDENTITY(1,1) NOT NULL,
-	[CTECLI_CODIGO_K] [int] NULL,
-	[PEDCTE_FECHA] [datetime] NOT NULL,
-	[CFGEDO_CODIGO_K] [int] NULL,
-	[PEDCTE_OBSERVACIONES] [varchar](100) NULL,
-         */
         public static int InsertarPedidoEnc(int CTECLI_CODIGO_K,string PEDCTE_FECHA, string PEDCTE_OBSERVACIONES, out int PEDCTE_CODIGO_K)
         {
             int iExitosoEnc = DalTienda.InsertarPedidoEnc(CTECLI_CODIGO_K, PEDCTE_FECHA, PEDCTE_OBSERVACIONES, out PEDCTE_CODIGO_K);

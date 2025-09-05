@@ -69,7 +69,12 @@ namespace Proyecto2.Catalogos.Pedidos
             dr["PEDCTED_CANTIDAD"] = int.Parse(txtCantidad.Text);
             dr["PEDCTED_CANTPZA"] = int.Parse(txtPieza.Text);
             dr["PEDCTED_PRECIO"] = decimal.Parse(txtPrecio.Text);
-            dr["TOTAL"] = ((Convert.ToDecimal(txtCantidad.Text) * Convert.ToDecimal(txtPrecio.Text)));
+
+            var PZASXUND = BillTiendaOnline.GetProductoById(int.Parse(DDLProducto.SelectedValue));
+            int iPzasxUnd = PZASXUND.PRODUC_PZAXUND;
+
+            decimal dTotal = ((((Convert.ToInt32(txtCantidad.Text ) * iPzasxUnd) + Convert.ToInt32(txtPieza.Text)) * Convert.ToDecimal(txtPrecio.Text))/iPzasxUnd);
+            dr["TOTAL"] = Math.Round(dTotal,2);
 
             dt.Rows.Add(dr);
             GVPedidos.DataSource = dt;
@@ -129,6 +134,27 @@ namespace Proyecto2.Catalogos.Pedidos
                 UtilControls.SweetBox("Error!", ex.ToString(), SweetAlertConstants.sError, this.Page, this.GetType());
             }
 
+        }
+
+
+        protected void GVPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if ( e.CommandName == "EliminarRow" )
+            {
+                int iIndex = Convert.ToInt32(e.CommandArgument);
+
+                DataTable dt = (DataTable)ViewState["GVPedidos"];
+                if(dt != null && dt.Rows.Count > 0)
+                {
+                    dt.Rows[iIndex].Delete();
+                    dt.AcceptChanges();
+
+                    GVPedidos.DataSource = dt;
+                    GVPedidos.DataBind();
+
+                    ViewState["GVPedidos"] = dt;
+                }
+            }
         }
     }
 }

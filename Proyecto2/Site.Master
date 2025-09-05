@@ -86,6 +86,7 @@
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/Catalogos/Productos/Lista de Productos.aspx">Productos</a></li>
                 <li class="nav-item"><a class="nav-link" runat="server" href="~/Catalogos/Clientes/ListaDeClientes.aspx">Clientes</a></li>
+                <li class="nav-item"><a class="nav-link" runat="server" href="~/Catalogos/Pedidos/RegistrodePedidos.aspx">Pedidos de Clientes</a></li>
             </ul>
         </div>
     </div>

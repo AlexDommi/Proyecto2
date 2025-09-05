@@ -34,6 +34,30 @@
             </div>
         </div>
         
+        <div class="row mb-3">
+            <div class="col-6">
+                <asp:Label ID="lblSubirImagen" runat="server" Text="Seleccionar Foto"></asp:Label>
+                <input type="file" id="SubeImagen" runat="server" class="btn btn-file" />
+            </div>
+            <div class="col-6">
+                <asp:Button ClientIDMode="Static" ID="btnSubeImagen" CssClass="btn btn-primary" Text="Subir" runat="server" OnClick="btnSubeImagen_Click"/>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-6">
+                
+            </div>
+            <div class="col-6">
+                <asp:Label ID="lblFoto" runat="server">Foto</asp:Label>
+                <br />
+                <asp:Image ID="imgFotoChofer" Width="150" Height="100" runat="server" />
+                <br />
+                <asp:Label ID="urlFoto" runat="server">Aquí aparece el path de la foto que seleccionaste
+                </asp:Label>
+            </div>
+        </div>
+         
+        
 
         <div class="row mb-3">
             <div class="col-4">
@@ -52,7 +76,7 @@
                     <hr />
                 </div>
                 <div class="col-4">
-                    <asp:Button ClientIDMode="Static" ID="btnNuevo" CssClass="btn btn-success btn-sm w-100" Width="200px" Text="Nuevo" runat="server" UseSubmitBehavior="false" OnClientClick="return false;"/> <%--OnClick="btnNuevo_Click" --%>
+                    <asp:Button ClientIDMode="Static" ID="btnNuevo" CssClass="btn btn-success btn-sm w-100" Width="200px" Text="Nuevo" runat="server" OnClick="btnNuevo_Click"/>
                 </div>
                 <div class="col-4">
                     <asp:Button ClientIDMode="Static" ID="btnEditar" CssClass="btn btn-primary btn-sm w-100" Width="200px" Text="Guardar Cambios" runat="server" OnClick="btnEditar_Click"/>
@@ -136,6 +160,11 @@
                                  HeaderText="Direccion"
                                  ItemStyle-Width="50px"
                                  SortExpression="CTECLI_DIRECCION" />
+                            <asp:BoundField
+                                DataField="CTECLI_FOTOURL"
+                                HeaderText="Url Foto"
+                                ItemStyle-Width="50px"
+                                SortExpression="CTECLI_FOTOURL" />
                         </Columns>
                         </asp:GridView>
         

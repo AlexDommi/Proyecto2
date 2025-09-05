@@ -10,7 +10,7 @@ namespace CapaDatos
         // Ejemplo: Obtener lista de productos, agregar producto, eliminar producto, etc.
         //Es vacio porque no retorna nada solamente es para mandar los datos a la base de datos 
         /* CLIENTES*/
-        public static int InserarCliente(string CTECLI_NOMBRE, string CTECLI_RAZONSOCIAL, string CTECLI_CORREO, string CTECLI_TELEFONO, string CTECLI_DIRECCION)
+        public static int InserarCliente(string CTECLI_NOMBRE, string CTECLI_RAZONSOCIAL, string CTECLI_CORREO, string CTECLI_TELEFONO, string CTECLI_DIRECCION, string sUrlFoto)
         {
 
             try
@@ -21,7 +21,8 @@ namespace CapaDatos
                                             , "@CTECLI_RAZONSOCIAL", CTECLI_RAZONSOCIAL
                                             , "@CTECLI_CORREO", CTECLI_CORREO
                                             , "@CTECLI_TELEFONO", CTECLI_TELEFONO
-                                            , "@CTECLI_DIRECCION", CTECLI_DIRECCION);
+                                            , "@CTECLI_DIRECCION", CTECLI_DIRECCION
+                                            , "@CTECLI_FOTOURL", sUrlFoto);
             }
             catch (Exception)
             {
@@ -30,7 +31,7 @@ namespace CapaDatos
             }
         }
 
-        public static int ActualizarCliente(int CTECLI_CODIGO_K, string CTECLI_NOMBRE, string CTECLI_RAZONSOCIAL, string CTECLI_CORREO, string CTECLI_TELEFONO, string CTECLI_DIRECCION)
+        public static int ActualizarCliente(int CTECLI_CODIGO_K, string CTECLI_NOMBRE, string CTECLI_RAZONSOCIAL, string CTECLI_CORREO, string CTECLI_TELEFONO, string CTECLI_DIRECCION, string CTECLI_FOTOURL)
         {
             try
             {
@@ -41,7 +42,8 @@ namespace CapaDatos
                                             , "@CTECLI_RAZONSOCIAL", CTECLI_RAZONSOCIAL
                                             , "@CTECLI_CORREO", CTECLI_CORREO
                                             , "@CTECLI_TELEFONO", CTECLI_TELEFONO
-                                            , "@CTECLI_DIRECCION", CTECLI_DIRECCION);
+                                            , "@CTECLI_DIRECCION", CTECLI_DIRECCION
+                                            , "@CTECLI_FOTOURL", CTECLI_FOTOURL);
             }
             catch (Exception)
             {
@@ -125,7 +127,7 @@ namespace CapaDatos
 
        
         /* PRODUCTOS */
-        public static int InserarProducto(string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K)
+        public static int InserarProducto(string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K, int PRODUC_PZAXUND)
         {
             try
             {
@@ -137,6 +139,7 @@ namespace CapaDatos
                                                 , "@CFGEDO_CODIGO_K", CFGEDO_CODIGO_K
                                                 , "@PRODUC_OBSERVACIONES", PRODUC_OBSERVACIONES
                                                 , "@PRODUC_CODIGO_BARRAS", PRODUC_CODIGO_BARRAS
+                                                , "@PRODUC_PZAXUND", PRODUC_PZAXUND
                                                 );
             }
             catch (Exception)
@@ -158,7 +161,7 @@ namespace CapaDatos
             }
         }
 
-        public static int ActualizarProducto(int PRODUC_CODIGO_K, string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K)
+        public static int ActualizarProducto(int PRODUC_CODIGO_K, string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K, int PRODUC_PZAXUND)
         {
             try
             {
@@ -170,7 +173,9 @@ namespace CapaDatos
                                                 , "@PRODUC_PESO", PRODUC_PESO
                                                 , "@PRODUC_OBSERVACIONES", PRODUC_OBSERVACIONES
                                                 , "@PRODUC_CODIGO_BARRAS", PRODUC_CODIGO_BARRAS
-                                                , "@CFGEDO_CODIGO_K", CFGEDO_CODIGO_K);
+                                                , "@CFGEDO_CODIGO_K", CFGEDO_CODIGO_K
+                                                , "@PRODUC_PZAXUND", PRODUC_PZAXUND
+                                                );
             }
             catch (Exception)
             {
