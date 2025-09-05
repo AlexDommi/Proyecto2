@@ -55,7 +55,6 @@ namespace Proyecto2.Catalogos.Pedidos
                 dt.Columns.Add("PEDCTED_CANTPZA", typeof(int));
                 dt.Columns.Add("PEDCTED_PRECIO", typeof(decimal));
                 dt.Columns.Add("TOTAL", typeof(decimal));
-
             }
         }
 
