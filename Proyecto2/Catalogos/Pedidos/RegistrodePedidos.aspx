@@ -35,7 +35,7 @@
         </div>
     <div class="col-6">
         <br />
-        <asp:Button ClientIDMode="Static" ID="btnRegistrarPedido" CssClass="btn btn-dark btn-sm w-100" Width="200px" Text="Registrar Pedido" runat="server"/>
+        <asp:Button ClientIDMode="Static" ID="btnRegistrarPedido" CssClass="btn btn-dark btn-sm w-100" Width="200px" Text="Registrar Pedido" runat="server" OnClick="btnRegistrarPedido_Click"/>
     </div>
     
 </div>
@@ -50,24 +50,24 @@
     </div>
     <div class="row">
             <div class="col-3">
-            <asp:Label ID="Label1" runat="server">Producto</asp:Label>
-            <asp:DropDownList ID="DropDownList1" CssClass="form-control" runat="server"></asp:DropDownList>
+            <asp:Label ID="lblProducto" runat="server">Producto</asp:Label>
+            <asp:DropDownList ID="DDLProducto" CssClass="form-control" runat="server"></asp:DropDownList>
         </div>
         <div class="col-3">
-            <asp:Label ID="Label2" runat="server">Cantidad</asp:Label>
-            <asp:TextBox ClientIDMode="Static" ID="TextBox1" runat="server" placeholder="CodBarras" MaxLength="10" CssClass="form-control" ValidateRequestMode="Disabled" />
+            <asp:Label ID="lblCantidad" runat="server">Cantidad</asp:Label>
+            <asp:TextBox ClientIDMode="Static" ID="txtCantidad" runat="server" placeholder="Cantidad" MaxLength="10" CssClass="form-control" ValidateRequestMode="Disabled" />
         </div>
         <div class="col-2">
-            <asp:Label ID="Label3" runat="server">Pieza</asp:Label>
-            <asp:TextBox ClientIDMode="Static" ID="TextBox2" runat="server" placeholder="CodBarras" MaxLength="10" CssClass="form-control" ValidateRequestMode="Disabled" />
+            <asp:Label ID="lblPieza" runat="server">Pieza</asp:Label>
+            <asp:TextBox ClientIDMode="Static" ID="txtPieza" runat="server" placeholder="Pieza" MaxLength="10" CssClass="form-control" ValidateRequestMode="Disabled" />
         </div>
         <div class="col-2">
-            <asp:Label ID="Label4" runat="server">Precio</asp:Label>
-            <asp:TextBox ClientIDMode="Static" ID="TextBox3" runat="server" placeholder="CodBarras" MaxLength="10" CssClass="form-control" ValidateRequestMode="Disabled" />
+            <asp:Label ID="lblPrecio" runat="server">Precio</asp:Label>
+            <asp:TextBox ClientIDMode="Static" ID="txtPrecio" runat="server" placeholder="Precio" MaxLength="10" CssClass="form-control" ValidateRequestMode="Disabled" />
         </div>
         <div class="col-2">
-            <asp:Label ID="Label5" runat="server">Accion</asp:Label>
-            <asp:Button ClientIDMode="Static" ID="btnAgregarItem" CssClass="btn btn-success btn-sm w-100" Width="200px" Text="Agregar Item" runat="server" UseSubmitBehavior="false" OnClientClick="return false;"/> 
+            <asp:Label ID="lblAccion" runat="server">Accion</asp:Label>
+            <asp:Button ClientIDMode="Static" ID="btnAgregarItem" CssClass="btn btn-success btn-sm w-100" Width="200px" Text="Agregar Item" runat="server" UseSubmitBehavior="false" OnClick="btnAgregarItem_Click"/> 
         </div>  
     </div>
     
@@ -79,11 +79,11 @@
                 <div class="table-responsive">
                     <%--ButtonField - Boton personalizado al gusto--%>
                     <asp:GridView
-                        ID="GVProductos"
+                        ID="GVPedidos"
                         runat="server"
                         CssClass="table table-bordered table-striped table-condensed mt-3"
                         AutoGenerateColumns="false"
-                        DataKeyNames="PRODUC_CODIGO_K"
+                        
                         >
                         <%--<asp:GridView
                         ID="GridView1"
@@ -101,6 +101,7 @@
                                     ClientIDMode="Static"
                                     ID="btnSeleccionar" 
                                     runat="server" 
+                                    ItemStyle-Width="50px"
                                     CssClass="btn btn-success btn-xs btnSeleccionar"
                                     CommandName="Select" 
                                     Text="Seleccionar" />
@@ -115,45 +116,25 @@
 
                          <%--Nombre--%>
                          <asp:BoundField
-                             DataField="PRODUC_DESCRIPCION"
-                             HeaderText="Descripcion"
+                             DataField="PEDCTED_CANTIDAD"
+                             HeaderText="Cantidad"
                              ItemStyle-Width="50px"
-                             SortExpression="PRODUC_DESCRIPCION" />
+                             SortExpression="PEDCTED_CANTIDAD" />
 
                          <%--Razon Social--%>
                          <asp:BoundField
-                             DataField="PRODUC_DESCCORTA"
+                             DataField="PEDCTED_CANTPZA"
                              HeaderText="DescCorta"
                              ItemStyle-Width="50px"
-                             SortExpression="PRODUC_DESCCORTA" />
+                             SortExpression="PEDCTED_CANTPZA" />
 
                          <%--Correo--%>
                          <asp:BoundField
-                             DataField="PRODUC_PESO"
+                             DataField="PEDCTED_PRECIO"
                              HeaderText="Peso"
                              ItemStyle-Width="50px"
-                             SortExpression="PRODUC_PESO" />
+                             SortExpression="PEDCTED_PRECIO" />
 
-                         <%--Direccion--%>
-                         <asp:BoundField
-                             DataField="PRODUC_OBSERVACIONES"
-                             HeaderText="Observaciones"
-                             ItemStyle-Width="50px"
-                             SortExpression="PRODUC_OBSERVACIONES" />
-
-                        <%--Direccion--%>
-                        <asp:BoundField
-                            DataField="PRODUC_CODIGO_BARRAS"
-                            HeaderText="CodBarras"
-                            ItemStyle-Width="50px"
-                            SortExpression="PRODUC_CODIGO_BARRAS" />
-
-                                                <%--Direccion--%>
-                        <asp:BoundField
-                            DataField="CFGEDO_CODIGO_K"
-                            HeaderText="Estado"
-                            ItemStyle-Width="50px"
-                            SortExpression="CFGEDO_CODIGO_K" />
                     </Columns>
                     </asp:GridView>
                 </div>

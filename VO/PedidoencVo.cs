@@ -13,7 +13,6 @@ namespace VO
         private DateTime _PEDCTE_FECHA;
         private string _PEDCTE_OBSERVACIONES;
         private int _CFGEDO_CODIGO_K;
-        private List<PedidoDetVo> listDetallePedido;
         //Propiedades
         public int PEDCTE_CODIGO_K
         {

@@ -55,7 +55,7 @@ namespace CapaDatos
             {
                 return MetodoDatos.iExecuteNonQuery("SP_ELIMINAR_CLIENTES_BY_ID", "@CTECLI_CODIGO_K", CTECLI_CODIGO_K);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return 0;
@@ -152,7 +152,7 @@ namespace CapaDatos
             {
                 return MetodoDatos.iExecuteNonQuery("SP_ELIMINAR_PRODUCTOS_BY_ID", "@PRODUC_CODIGO_K", PRODUC_CODIGO_K);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 0;
             }
@@ -257,6 +257,47 @@ namespace CapaDatos
 
                 throw;
             }
+        }
+
+        public static int InsertarPedidoEnc(int CTECLI_CODIGO_K, string PEDCTE_FECHA, string PEDCTE_OBSERVACIONES, out int PEDCTE_CODIGO_K)
+        {
+            try
+            {
+                return MetodoDatos.iExecuteNonQueryWithOutput(
+                                                "SP_INSERTARPEDIDOENC",
+                                                "@PEDCTE_CODIGO_K",
+                                                out PEDCTE_CODIGO_K,
+                                                "@CTECLI_CODIGO_K", CTECLI_CODIGO_K,
+                                                "@PEDCTE_FECHA", PEDCTE_FECHA,
+                                                "@PEDCTE_OBSERVACIONES", PEDCTE_OBSERVACIONES
+                                            );
+                
+            }
+            catch (Exception)
+            {
+                PEDCTE_CODIGO_K = 0;
+                return 0;
+            }
+        }
+        public static int InsertarPedidoDet(int PEDCTE_CODIGO_K, int PRODUC_CODIGO_K, int PEDCTED_CANTIDAD, int PEDCTED_CANTPZA, decimal PEDCTED_PRECIO)
+        {
+
+            try
+            {
+                return MetodoDatos.iExecuteNonQuery(
+                    "SP_INSERTARPEDIDODET",
+                    "@PEDCTE_CODIGO_K", PEDCTE_CODIGO_K,
+                    "@PRODUC_CODIGO_K", PRODUC_CODIGO_K,
+                    "@PEDCTED_CANTIDAD", PEDCTED_CANTIDAD,
+                    "@PEDCTED_CANTPZA", PEDCTED_CANTPZA,
+                    "@PEDCTED_PRECIO", PEDCTED_PRECIO
+                );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error insertando detalle del producto {PRODUC_CODIGO_K}: {ex.Message}");
+            }
+
         }
     }
 }

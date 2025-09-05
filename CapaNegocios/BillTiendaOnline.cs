@@ -1,4 +1,5 @@
 ﻿using CapaDatos;
+using System;
 using System.Collections.Generic;
 using VO;
 
@@ -113,6 +114,26 @@ namespace CapaNegocios
             {
                 return 0;
             }
+        }
+        /*
+         [PEDCTE_CODIGO_K] [int] IDENTITY(1,1) NOT NULL,
+	[CTECLI_CODIGO_K] [int] NULL,
+	[PEDCTE_FECHA] [datetime] NOT NULL,
+	[CFGEDO_CODIGO_K] [int] NULL,
+	[PEDCTE_OBSERVACIONES] [varchar](100) NULL,
+         */
+        public static int InsertarPedidoEnc(int CTECLI_CODIGO_K,string PEDCTE_FECHA, string PEDCTE_OBSERVACIONES, out int PEDCTE_CODIGO_K)
+        {
+            int iExitosoEnc = DalTienda.InsertarPedidoEnc(CTECLI_CODIGO_K, PEDCTE_FECHA, PEDCTE_OBSERVACIONES, out PEDCTE_CODIGO_K);
+
+            return iExitosoEnc;
+        }
+
+        public static int InsertarPedidoDet(int PEDCTE_CODIGO_K, int PRODUC_CODIGO_K, int PEDCTED_CANTIDAD, int PEDCTED_CANTPZA, decimal PEDCTED_PRECIO)
+        {
+            int iExitoso = DalTienda.InsertarPedidoDet(PEDCTE_CODIGO_K, PRODUC_CODIGO_K, PEDCTED_CANTIDAD, PEDCTED_CANTPZA, PEDCTED_PRECIO);
+
+            return iExitoso;
         }
     }
 }

@@ -10,7 +10,7 @@
     const btnRegistrarNuevo = document.getElementById("btnRegistrarNuevo");
     // const btnEditar = document.getElementById("btnEditar");
     const btnSeleccionar = document.getElementById("btnSeleccionar");
-    
+    const btnAgregarItem = document.getElementById("btnAgregarItem");
     // Mostrar al dar clic en btnNuevo
     if (btnNuevo) {
         btnNuevo.addEventListener("click", function () {
@@ -33,4 +33,19 @@
             
         });
     }
-    
+
+    if (btnSeleccionar) {
+        btnSeleccionar.addEventListener("click", function () {
+            e.preventDefault();
+            document.getElementById("txtId").disabled = true;
+            btnRegistrarNuevo.style.display = "block";
+
+        });
+}
+
+if (btnAgregarItem) {
+    btnAgregarItem.addEventListener("click", function () {
+        e.preventDefault();
+    });
+}
+

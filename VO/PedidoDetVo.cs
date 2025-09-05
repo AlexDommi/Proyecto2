@@ -9,11 +9,11 @@ namespace VO
 {
     public class PedidoDetVo
     {
-        public int _PEDCTE_CODIGO_K;
-        public int _PRODUC_CODIGO_K;
-        public int _PEDCTED_CANTIDAD;
-        public int _PEDCTED_CANTPZA;
-        public decimal _PEDCTED_PRECIO;
+        private int _PEDCTE_CODIGO_K;
+        private int _PRODUC_CODIGO_K;
+        private int _PEDCTED_CANTIDAD;
+        private int _PEDCTED_CANTPZA;
+        private decimal _PEDCTED_PRECIO;
 
         public int PEDCTE_CODIGO_K
         {
