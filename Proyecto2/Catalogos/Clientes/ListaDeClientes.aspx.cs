@@ -1,6 +1,7 @@
 ﻿using CapaNegocios;
 using Proyecto2.Util;
 using System;
+using System.IO;
 using System.Web.Services.Description;
 using System.Web.UI.WebControls;
 
@@ -13,6 +14,8 @@ namespace Proyecto2.Catalogos.Clientes
         {
             if (!IsPostBack)
             {
+                btnRegistrarNuevo.Visible = false;
+
                 if (Request.QueryString["CTECLI_CODIGO_K"] == null)
                 {
                     RefrescarGrid();
@@ -34,6 +37,7 @@ namespace Proyecto2.Catalogos.Clientes
                         this.txtCorreo.Text = Clientes.CTECLI_CORREO;
                         this.txtTelefono.Text = Clientes.CTECLI_TELEFONO;
                         this.txtDireccion.Text = Clientes.CTECLI_DIRECCION;
+                        this.urlFoto.Text = Clientes.CTECLI_FOTOURL;
                     }
                     else
                     {
@@ -59,7 +63,7 @@ namespace Proyecto2.Catalogos.Clientes
             txtCorreo.Text = "";
             txtTelefono.Text = "";
             txtDireccion.Text = "";
-
+            
             // Obtener la fila seleccionada
             GridViewRow fila = GVClientes.SelectedRow;
          
@@ -130,8 +134,8 @@ namespace Proyecto2.Catalogos.Clientes
                 string CTECLI_CORREO = txtCorreo.Text;
                 string CTECLI_TELEFONO = txtTelefono.Text;
                 string CTECLI_DIRECCION = txtDireccion.Text;
-
-                BillTiendaOnline.InsertarCliente(CTECLI_NOMBRE, CTECLI_RAZONSOCIAL, CTECLI_CORREO, CTECLI_TELEFONO, CTECLI_DIRECCION);
+                string urlFoto = this.urlFoto.Text;
+                BillTiendaOnline.InsertarCliente(CTECLI_NOMBRE, CTECLI_RAZONSOCIAL, CTECLI_CORREO, CTECLI_TELEFONO, CTECLI_DIRECCION,urlFoto);
 
                 RefrescarGrid();
 
@@ -149,6 +153,10 @@ namespace Proyecto2.Catalogos.Clientes
             txtCorreo.Text = "";
             txtTelefono.Text = "";
             txtDireccion.Text = "";
+            urlFoto.Text = "";
+
+            this.btnRegistrarNuevo.Visible = false;
+            btnEditar.Visible = true;
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
@@ -159,6 +167,9 @@ namespace Proyecto2.Catalogos.Clientes
             txtCorreo.Text = "";
             txtTelefono.Text = "";
             txtDireccion.Text = "";
+
+            btnRegistrarNuevo.Visible = true;
+            btnEditar.Visible = false;
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)
@@ -174,8 +185,9 @@ namespace Proyecto2.Catalogos.Clientes
             string CTECLI_CORREO = txtCorreo.Text;
             string CTECLI_TELEFONO = txtTelefono.Text;
             string CTECLI_DIRECCION = txtDireccion.Text;
+            string CTECLI_FOTOURL = urlFoto.Text;
 
-            string sResultado = BillTiendaOnline.ActualizarCliente(CTECLI_CODIGO_K, CTECLI_NOMBRE, CTECLI_RAZONSOCIAL, CTECLI_CORREO, CTECLI_TELEFONO, CTECLI_DIRECCION);
+            string sResultado = BillTiendaOnline.ActualizarCliente(CTECLI_CODIGO_K, CTECLI_NOMBRE, CTECLI_RAZONSOCIAL, CTECLI_CORREO, CTECLI_TELEFONO, CTECLI_DIRECCION, CTECLI_FOTOURL);
 
             switch (sResultado)
             {
@@ -205,5 +217,52 @@ namespace Proyecto2.Catalogos.Clientes
 
             UtilControls.SweetBox(mensaje, sub, SweetAlertConstants.sSuccess, this.Page, this.GetType());
         }
+
+        protected void btnSubeImagen_Click(object sender, EventArgs e)
+        {
+            // Validar que el usuario haya seleccionado un archivo
+            if (SubeImagen.Value != "")
+            {
+                // Asignar a una variable el nombre del archivo seleccionado
+                string FileName = Path.GetFileName(SubeImagen.PostedFile.FileName);
+
+                //validar que el archivo sea .jpg o .png
+                string FileExt = Path.GetExtension(FileName).ToLower();
+
+                if ((FileExt != ".jpg") && (FileExt != ".png") && (FileExt != ".jfif"))
+                {
+                    //Informamos que el archivo no es válido
+                    UtilControls.SweetBox(
+                   "Error!", "Seleccione un archivo válido", SweetAlertConstants.sError, this.Page, this.GetType()
+                   );
+                }
+                else
+                {
+                    //Verificar que el directorio donde vamos
+                    //guardar el archivo exista
+                    string pathDir = Server.MapPath("~/Imagenes/Clientes/");
+                    if (!Directory.Exists(pathDir))
+                    {
+                        //crea el arbol completo
+                        Directory.CreateDirectory(pathDir);
+                    }
+
+
+                    //Guardamos la imagen en el directorio correspondiente
+                    SubeImagen.PostedFile.SaveAs(pathDir + FileName);
+                    string urlfoto = "/Imagenes/Clientes/" + FileName;
+                    this.urlFoto.Text = urlfoto;
+                    this.imgFotoChofer.ImageUrl = urlfoto;
+                    
+                }
+
+            }
+            else
+            {
+                //Enviar mensaje de que no puede ser vacío
+                UtilControls.SweetBox("Error!", "Seleccione un archivo", SweetAlertConstants.sError, this.Page, this.GetType());
+            }
+        }
+
     }
 }

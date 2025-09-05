@@ -102,6 +102,7 @@
     <Content Include="About.aspx" />
     <Content Include="Catalogos\Index\Index.aspx" />
     <Content Include="Catalogos\Clientes\ListaDeClientes.aspx" />
+    <Content Include="Catalogos\Pedidos\RegistrodePedidos.aspx" />
     <Content Include="Catalogos\Productos\Lista de Productos.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -125,6 +126,15 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Imagenes\Index\1.png" />
+    <Content Include="Imagenes\Index\2.png" />
+    <Content Include="Imagenes\Index\3.png" />
+    <Content Include="Imagenes\Index\4.png" />
+    <Content Include="Imagenes\Index\5.png" />
+    <Content Include="Imagenes\Index\6.png" />
+    <Content Include="Imagenes\Index\7.png" />
+    <Content Include="Imagenes\Index\8.png" />
+    <Content Include="Imagenes\Index\Lo bueno y saludable está aquí..png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -158,7 +168,7 @@
     <Content Include="Scripts\jquery-3.7.0.min.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
-    <Content Include="Scripts\ListaDeClientes.js" />
+    <Content Include="Scripts\Botones.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
@@ -212,6 +222,13 @@
     <Compile Include="Catalogos\Clientes\ListaDeClientes.aspx.designer.cs">
       <DependentUpon>ListaDeClientes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\Pedidos\RegistrodePedidos.aspx.cs">
+      <DependentUpon>RegistrodePedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Pedidos\RegistrodePedidos.aspx.designer.cs">
+      <DependentUpon>RegistrodePedidos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\Productos\Lista de Productos.aspx.cs">
       <DependentUpon>Lista de Productos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -263,6 +280,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Imagenes\Clientes\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

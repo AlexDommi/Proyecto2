@@ -1,20 +1,18 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
     // Ocultar el botón al cargar
     if (btnRegistrarNuevo) {
-        document.getElementById("txtId").disabled = true;
-        btnRegistrarNuevo.style.display = "none";
+        document.getElementById("txtId").disabled = true;S
     }
 });
 
     const btnNuevo = document.getElementById("btnNuevo");
     const btnRegistrarNuevo = document.getElementById("btnRegistrarNuevo");
-    // const btnEditar = document.getElementById("btnEditar");
+    const btnSubeImagen = document.getElementById("btnSubeImagen");
     const btnSeleccionar = document.getElementById("btnSeleccionar");
-    
-    // Mostrar al dar clic en btnNuevo
+    const btnAgregarItem = document.getElementById("btnAgregarItem");
+
     if (btnNuevo) {
         btnNuevo.addEventListener("click", function () {
-            btnRegistrarNuevo.style.display = "block";
             document.getElementById("txtId").value = "";
             document.getElementById("txtNombre").value = "";
             document.getElementById("txtRazonSocial").value = "";
@@ -33,4 +31,19 @@
             
         });
     }
-    
+
+    if (btnSeleccionar) {
+        btnSeleccionar.addEventListener("click", function () {
+            e.preventDefault();
+            document.getElementById("txtId").disabled = true;
+            btnRegistrarNuevo.style.display = "block";
+
+        });
+}
+
+if (btnAgregarItem) {
+    btnAgregarItem.addEventListener("click", function () {
+        e.preventDefault();
+    });
+}
+

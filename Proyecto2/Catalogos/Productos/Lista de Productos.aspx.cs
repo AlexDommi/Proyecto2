@@ -46,6 +46,7 @@ namespace Proyecto2.Catalogos
                         this.txtObservaciones.Text = Productos.PRODUC_OBSERVACIONES;
                         this.txtCodBarras.Text = Productos.PRODUC_CODIGO_BARRAS;
                         this.DDLEstado.SelectedValue = Productos.CFGEDO_CODIGO_K.ToString();
+                        this.txtPZASXUND.Text = Productos.PRODUC_PZAXUND.ToString();
                     }
                     else
                     {
@@ -69,6 +70,7 @@ namespace Proyecto2.Catalogos
             txtObservaciones.Text = "";
             txtCodBarras.Text = "";
             DDLEstado.SelectedIndex = 0;
+            txtPZASXUND.Text = "";
 
             GridViewRow row = GVProductos.SelectedRow;
             txtId.Text = row.Cells[1].Text;
@@ -78,6 +80,7 @@ namespace Proyecto2.Catalogos
             txtObservaciones.Text = row.Cells[5].Text;
             txtCodBarras.Text = row.Cells[6].Text;
             DDLEstado.SelectedValue = row.Cells[7].Text;
+            txtPZASXUND.Text = row.Cells[8].Text;
 
 
 
@@ -93,7 +96,8 @@ namespace Proyecto2.Catalogos
                 string PRODUC_OBSERVACIONES = txtObservaciones.Text;
                 string PRODUC_CODIGO_BARRAS = txtCodBarras.Text;
                 int CFGEDO_CODIGO_K = int.Parse(DDLEstado.SelectedValue);
-                BillTiendaOnline.InsertarProducto(PRODUC_DESCRIPCION, PRODUC_DESCCORTA, PRODUC_PESO, PRODUC_OBSERVACIONES, PRODUC_CODIGO_BARRAS, CFGEDO_CODIGO_K);
+                int PRODUC_PZAXUND = int.Parse(txtPZASXUND.Text);
+                BillTiendaOnline.InsertarProducto(PRODUC_DESCRIPCION, PRODUC_DESCCORTA, PRODUC_PESO, PRODUC_OBSERVACIONES, PRODUC_CODIGO_BARRAS, CFGEDO_CODIGO_K, PRODUC_PZAXUND);
 
                 RefrescarGrid();
 
@@ -110,6 +114,7 @@ namespace Proyecto2.Catalogos
             txtPeso.Text = "";
             txtObservaciones.Text = "";
             txtCodBarras.Text = "";
+            txtPZASXUND.Text = "";
             DDLEstado.SelectedIndex = 0;
         }
 
@@ -128,10 +133,10 @@ namespace Proyecto2.Catalogos
             string PRODUC_OBSERVACIONES = txtObservaciones.Text;
             string PRODUC_CODIGO_BARRAS = txtCodBarras.Text;
             int CFGEDO_CODIGO_K = int.Parse(DDLEstado.SelectedValue);
-
+            int PRODUC_PZAXUND = int.Parse(txtPZASXUND.Text);
             try
             {
-                int iResultado = BillTiendaOnline.ActualizarProducto (PRODUC_CODIGO_K, PRODUC_DESCRIPCION, PRODUC_DESCCORTA, PRODUC_PESO, PRODUC_OBSERVACIONES, PRODUC_CODIGO_BARRAS, CFGEDO_CODIGO_K);
+                int iResultado = BillTiendaOnline.ActualizarProducto (PRODUC_CODIGO_K, PRODUC_DESCRIPCION, PRODUC_DESCCORTA, PRODUC_PESO, PRODUC_OBSERVACIONES, PRODUC_CODIGO_BARRAS, CFGEDO_CODIGO_K,PRODUC_PZAXUND);
 
                 if (iResultado == 1)
                 {
@@ -152,6 +157,7 @@ namespace Proyecto2.Catalogos
                 txtPeso.Text = "";
                 txtObservaciones.Text = "";
                 txtCodBarras.Text = "";
+                txtPZASXUND.Text = "";
                 DDLEstado.SelectedIndex = 0;
 
                 RefrescarGrid();
@@ -199,6 +205,7 @@ namespace Proyecto2.Catalogos
                 txtPeso.Text = "";
                 txtObservaciones.Text = "";
                 txtCodBarras.Text = "";
+                txtPZASXUND.Text = "";
                 DDLEstado.SelectedIndex = 0;
 
                 RefrescarGrid();

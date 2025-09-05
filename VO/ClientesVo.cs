@@ -12,7 +12,7 @@ namespace VO
         private string _CTECLI_CORREO;
         private string _CTECLI_TELEFONO;
         private string _CTECLI_DIRECCION;
-
+        private string _CTECLI_FOTOURL;
         //Propiedades
         public int CTECLI_CODIGO_K
         {
@@ -46,7 +46,11 @@ namespace VO
             get => _CTECLI_DIRECCION;
             set => _CTECLI_DIRECCION = value;
         }
-
+        public string CTECLI_FOTOURL
+        {
+            get => _CTECLI_FOTOURL;
+            set => _CTECLI_FOTOURL = value;
+        }
         //Constructor
         public ClientesVo(DataRow dr)
         {
@@ -56,6 +60,7 @@ namespace VO
             CTECLI_CORREO = dr["CTECLI_CORREO"].ToString();
             CTECLI_TELEFONO = dr["CTECLI_TELEFONO"].ToString();
             CTECLI_DIRECCION = dr["CTECLI_DIRECCION"].ToString();
+            CTECLI_FOTOURL = dr["CTECLI_FOTOURL"].ToString();
         }
 
         public ClientesVo()
@@ -66,6 +71,7 @@ namespace VO
             CTECLI_CORREO = string.Empty;
             CTECLI_TELEFONO = string.Empty;
             CTECLI_DIRECCION = string.Empty;
+            CTECLI_FOTOURL = string.Empty;
         }
         #endregion
     }

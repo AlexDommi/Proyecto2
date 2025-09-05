@@ -1,4 +1,4 @@
-﻿using System.Data;
+﻿        using System.Data;
 
 namespace VO
 {
@@ -13,7 +13,7 @@ namespace VO
         private string _PRODUC_OBSERVACIONES;
         private string _PRODUC_CODIGO_BARRAS;
         private int _CFGEDO_CODIGO_K;
-
+        private int _PRODUC_PZAXUND;
         //Propiedades
         public int PRODUC_CODIGO_K
         {
@@ -52,6 +52,11 @@ namespace VO
             set => _CFGEDO_CODIGO_K = value;
         }
 
+        public int PRODUC_PZAXUND
+        {
+            get => _PRODUC_PZAXUND;
+            set => _PRODUC_PZAXUND = value;
+        }
         //Constructor
         public ProductosVo(DataRow dr)
         {
@@ -62,7 +67,7 @@ namespace VO
             PRODUC_OBSERVACIONES = dr["PRODUC_OBSERVACIONES"].ToString();
             PRODUC_CODIGO_BARRAS = dr["PRODUC_CODIGO_BARRAS"].ToString();
             CFGEDO_CODIGO_K = int.Parse(dr["CFGEDO_CODIGO_K"].ToString());
-
+            PRODUC_PZAXUND = int.Parse(dr["PRODUC_PZAXUND"].ToString());
         }
 
         public ProductosVo()
@@ -74,6 +79,7 @@ namespace VO
             PRODUC_OBSERVACIONES = string.Empty;
             PRODUC_CODIGO_BARRAS = string.Empty;
             CFGEDO_CODIGO_K = 0;
+            PRODUC_PZAXUND = 0;
         }
         #endregion
     }

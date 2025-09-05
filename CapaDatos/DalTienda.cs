@@ -10,7 +10,7 @@ namespace CapaDatos
         // Ejemplo: Obtener lista de productos, agregar producto, eliminar producto, etc.
         //Es vacio porque no retorna nada solamente es para mandar los datos a la base de datos 
         /* CLIENTES*/
-        public static int InserarCliente(string CTECLI_NOMBRE, string CTECLI_RAZONSOCIAL, string CTECLI_CORREO, string CTECLI_TELEFONO, string CTECLI_DIRECCION)
+        public static int InserarCliente(string CTECLI_NOMBRE, string CTECLI_RAZONSOCIAL, string CTECLI_CORREO, string CTECLI_TELEFONO, string CTECLI_DIRECCION, string sUrlFoto)
         {
 
             try
@@ -21,7 +21,8 @@ namespace CapaDatos
                                             , "@CTECLI_RAZONSOCIAL", CTECLI_RAZONSOCIAL
                                             , "@CTECLI_CORREO", CTECLI_CORREO
                                             , "@CTECLI_TELEFONO", CTECLI_TELEFONO
-                                            , "@CTECLI_DIRECCION", CTECLI_DIRECCION);
+                                            , "@CTECLI_DIRECCION", CTECLI_DIRECCION
+                                            , "@CTECLI_FOTOURL", sUrlFoto);
             }
             catch (Exception)
             {
@@ -30,7 +31,7 @@ namespace CapaDatos
             }
         }
 
-        public static int ActualizarCliente(int CTECLI_CODIGO_K, string CTECLI_NOMBRE, string CTECLI_RAZONSOCIAL, string CTECLI_CORREO, string CTECLI_TELEFONO, string CTECLI_DIRECCION)
+        public static int ActualizarCliente(int CTECLI_CODIGO_K, string CTECLI_NOMBRE, string CTECLI_RAZONSOCIAL, string CTECLI_CORREO, string CTECLI_TELEFONO, string CTECLI_DIRECCION, string CTECLI_FOTOURL)
         {
             try
             {
@@ -41,7 +42,8 @@ namespace CapaDatos
                                             , "@CTECLI_RAZONSOCIAL", CTECLI_RAZONSOCIAL
                                             , "@CTECLI_CORREO", CTECLI_CORREO
                                             , "@CTECLI_TELEFONO", CTECLI_TELEFONO
-                                            , "@CTECLI_DIRECCION", CTECLI_DIRECCION);
+                                            , "@CTECLI_DIRECCION", CTECLI_DIRECCION
+                                            , "@CTECLI_FOTOURL", CTECLI_FOTOURL);
             }
             catch (Exception)
             {
@@ -55,7 +57,7 @@ namespace CapaDatos
             {
                 return MetodoDatos.iExecuteNonQuery("SP_ELIMINAR_CLIENTES_BY_ID", "@CTECLI_CODIGO_K", CTECLI_CODIGO_K);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return 0;
@@ -125,7 +127,7 @@ namespace CapaDatos
 
        
         /* PRODUCTOS */
-        public static int InserarProducto(string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K)
+        public static int InserarProducto(string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K, int PRODUC_PZAXUND)
         {
             try
             {
@@ -137,6 +139,7 @@ namespace CapaDatos
                                                 , "@CFGEDO_CODIGO_K", CFGEDO_CODIGO_K
                                                 , "@PRODUC_OBSERVACIONES", PRODUC_OBSERVACIONES
                                                 , "@PRODUC_CODIGO_BARRAS", PRODUC_CODIGO_BARRAS
+                                                , "@PRODUC_PZAXUND", PRODUC_PZAXUND
                                                 );
             }
             catch (Exception)
@@ -152,13 +155,13 @@ namespace CapaDatos
             {
                 return MetodoDatos.iExecuteNonQuery("SP_ELIMINAR_PRODUCTOS_BY_ID", "@PRODUC_CODIGO_K", PRODUC_CODIGO_K);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 0;
             }
         }
 
-        public static int ActualizarProducto(int PRODUC_CODIGO_K, string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K)
+        public static int ActualizarProducto(int PRODUC_CODIGO_K, string PRODUC_DESCRIPCION, string PRODUC_DESCCORTA, decimal PRODUC_PESO, string PRODUC_OBSERVACIONES, string PRODUC_CODIGO_BARRAS, int CFGEDO_CODIGO_K, int PRODUC_PZAXUND)
         {
             try
             {
@@ -170,7 +173,9 @@ namespace CapaDatos
                                                 , "@PRODUC_PESO", PRODUC_PESO
                                                 , "@PRODUC_OBSERVACIONES", PRODUC_OBSERVACIONES
                                                 , "@PRODUC_CODIGO_BARRAS", PRODUC_CODIGO_BARRAS
-                                                , "@CFGEDO_CODIGO_K", CFGEDO_CODIGO_K);
+                                                , "@CFGEDO_CODIGO_K", CFGEDO_CODIGO_K
+                                                , "@PRODUC_PZAXUND", PRODUC_PZAXUND
+                                                );
             }
             catch (Exception)
             {
@@ -257,6 +262,47 @@ namespace CapaDatos
 
                 throw;
             }
+        }
+
+        public static int InsertarPedidoEnc(int CTECLI_CODIGO_K, string PEDCTE_FECHA, string PEDCTE_OBSERVACIONES, out int PEDCTE_CODIGO_K)
+        {
+            try
+            {
+                return MetodoDatos.iExecuteNonQueryWithOutput(
+                                                "SP_INSERTARPEDIDOENC",
+                                                "@PEDCTE_CODIGO_K",
+                                                out PEDCTE_CODIGO_K,
+                                                "@CTECLI_CODIGO_K", CTECLI_CODIGO_K,
+                                                "@PEDCTE_FECHA", PEDCTE_FECHA,
+                                                "@PEDCTE_OBSERVACIONES", PEDCTE_OBSERVACIONES
+                                            );
+                
+            }
+            catch (Exception)
+            {
+                PEDCTE_CODIGO_K = 0;
+                return 0;
+            }
+        }
+        public static int InsertarPedidoDet(int PEDCTE_CODIGO_K, int PRODUC_CODIGO_K, int PEDCTED_CANTIDAD, int PEDCTED_CANTPZA, decimal PEDCTED_PRECIO)
+        {
+
+            try
+            {
+                return MetodoDatos.iExecuteNonQuery(
+                    "SP_INSERTARPEDIDODET",
+                    "@PEDCTE_CODIGO_K", PEDCTE_CODIGO_K,
+                    "@PRODUC_CODIGO_K", PRODUC_CODIGO_K,
+                    "@PEDCTED_CANTIDAD", PEDCTED_CANTIDAD,
+                    "@PEDCTED_CANTPZA", PEDCTED_CANTPZA,
+                    "@PEDCTED_PRECIO", PEDCTED_PRECIO
+                );
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error insertando detalle del producto {PRODUC_CODIGO_K}: {ex.Message}");
+            }
+
         }
     }
 }

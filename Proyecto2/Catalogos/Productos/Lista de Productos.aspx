@@ -35,6 +35,10 @@
     </div>
     <div class="row mb-3">
     <div class="col-6">
+        <asp:Label ID="lblPiezasXUnd" runat="server">Piezas x Unidad</asp:Label>
+        <asp:TextBox ClientIDMode="Static" ID="txtPZASXUND" runat="server" placeholder="PZASXUND" MaxLength="10" CssClass="form-control" ValidateRequestMode="Disabled" />
+    </div>
+    <div class="col-6">
         <asp:Label ID="lblObservaciones" runat="server">Observaciones</asp:Label>
         <asp:TextBox ClientIDMode="Static" ID="txtObservaciones" runat="server" placeholder="Observaciones" MaxLength="200" CssClass="form-control" ValidateRequestMode="Disabled"/>
     </div>
@@ -45,9 +49,6 @@
             <asp:Button ClientIDMode="Static" ID="btnRegistrarNuevo" CssClass="btn btn-success btn-sm w-100" Width="200px" Text="Registrar Nuevo Producto" runat="server" OnClick="btnRegistrarNuevo_Click"/>
         </div>
     </div>
-
-    
-
     </div>
 <div class="container text-center">
     <div class="row mb-3">
@@ -143,6 +144,11 @@
                             HeaderText="Estado"
                             ItemStyle-Width="50px"
                             SortExpression="CFGEDO_CODIGO_K" />
+                        <asp:BoundField
+                            DataField="PRODUC_PZAXUND"
+                            HeaderText="Pieza x Unidad"
+                            ItemStyle-Width="50px"
+                            SortExpression="PRODUC_PZAXUND" />
                     </Columns>
                     </asp:GridView>
                 </div>
@@ -151,5 +157,5 @@
     </div>
 </div>
 
-<script src="../../Scripts/ListaDeClientes.js"></script>   
+<script src="../../Scripts/Botones.js"></script>   
 </asp:Content>

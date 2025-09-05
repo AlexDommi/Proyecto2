@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace VO
 {
-    internal class PedidoencVo
+    public class PedidoencVo
     {
         #region Pedidoenc
         //Atributos

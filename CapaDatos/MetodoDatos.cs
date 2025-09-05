@@ -113,6 +113,46 @@ namespace CapaDatos
             }
         }
 
+        public static int iExecuteNonQueryWithOutput(string sStoreProcedure, string outputParamName, out int outputValue, params object[] parametros)
+        {
+            outputValue = 0;
+            string sConexion = Configuracion.ObtenerConexion;
+
+            using (SqlConnection conn = new SqlConnection(sConexion))
+            using (SqlCommand cmd = new SqlCommand(sStoreProcedure, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Agregar parámetros de entrada
+                if (parametros != null)
+                {
+                    if (parametros.Length % 2 != 0)
+                        throw new ApplicationException("Los parámetros deben venir en pares");
+
+                    for (int i = 0; i < parametros.Length; i += 2)
+                    {
+                        cmd.Parameters.AddWithValue(parametros[i].ToString(), parametros[i + 1] ?? DBNull.Value);
+                    }
+                }
+
+                // Agregar parámetro de salida
+                SqlParameter outputParam = new SqlParameter(outputParamName, SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(outputParam);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                outputValue = Convert.ToInt32(outputParam.Value); // aquí obtienes el folio
+            }
+
+            return 1;
+        }
+
+
+
         //Metodo que nos ejecuta un Store Procedure y regresa un valor escalar
         public static int iExecuteEscalar(string sStoredProcedure, params object[] parametros)
         {
