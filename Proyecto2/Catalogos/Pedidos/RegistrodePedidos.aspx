@@ -115,21 +115,21 @@
                              ItemStyle-Width="300px"
                              SortExpression="PRODUC_CODIGO_K" />
 
-                         <%--Nombre--%>
+                         <%--Cant--%>
                          <asp:BoundField
                              DataField="PEDCTED_CANTIDAD"
                              HeaderText="Cantidad"
                              ItemStyle-Width="300px"
                              SortExpression="PEDCTED_CANTIDAD" />
 
-                         <%--Razon Social--%>
+                         <%--Pieza--%>
                          <asp:BoundField
                              DataField="PEDCTED_CANTPZA"
                              HeaderText="Pieza"
                              ItemStyle-Width="300px"
                              SortExpression="PEDCTED_CANTPZA" />
 
-                         <%--Correo--%>
+                         <%--Precio--%>
                          <asp:BoundField
                              DataField="PEDCTED_PRECIO"
                              HeaderText="Precio"
@@ -148,5 +148,5 @@
     </div>
 </div>
 
-<script src="../../Scripts/ListaDeClientes.js"></script>   
+<script src="../../Scripts/Botones.js"></script>   
 </asp:Content>

@@ -160,6 +160,8 @@
                                  HeaderText="Direccion"
                                  ItemStyle-Width="50px"
                                  SortExpression="CTECLI_DIRECCION" />
+
+                            <%--Foto--%>
                             <asp:BoundField
                                 DataField="CTECLI_FOTOURL"
                                 HeaderText="Url Foto"
@@ -174,5 +176,5 @@
         </div>
     </div>
 
-    <script src="../../Scripts/ListaDeClientes.js"></script>   
+    <script src="../../Scripts/Botones.js"></script>   
 </asp:Content>

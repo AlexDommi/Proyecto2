@@ -49,9 +49,6 @@
             <asp:Button ClientIDMode="Static" ID="btnRegistrarNuevo" CssClass="btn btn-success btn-sm w-100" Width="200px" Text="Registrar Nuevo Producto" runat="server" OnClick="btnRegistrarNuevo_Click"/>
         </div>
     </div>
-
-    
-
     </div>
 <div class="container text-center">
     <div class="row mb-3">
@@ -160,5 +157,5 @@
     </div>
 </div>
 
-<script src="../../Scripts/ListaDeClientes.js"></script>   
+<script src="../../Scripts/Botones.js"></script>   
 </asp:Content>

@@ -8,15 +8,9 @@
     const btnNuevo = document.getElementById("btnNuevo");
     const btnRegistrarNuevo = document.getElementById("btnRegistrarNuevo");
     const btnSubeImagen = document.getElementById("btnSubeImagen");
-    // const btnEditar = document.getElementById("btnEditar");
     const btnSeleccionar = document.getElementById("btnSeleccionar");
-const btnAgregarItem = document.getElementById("btnAgregarItem");
-//if (btnSubeImagen) {
-//    btnSubeImagen.addEventListener("click", function () {
-//        btnRegistrarNuevo.style.display = "block";
-//    });
-//}
-    // Mostrar al dar clic en btnNuevo
+    const btnAgregarItem = document.getElementById("btnAgregarItem");
+
     if (btnNuevo) {
         btnNuevo.addEventListener("click", function () {
             document.getElementById("txtId").value = "";
